@@ -1,0 +1,465 @@
+﻿
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MODI | Jana & Muhammad</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Tahoma, Arial, sans-serif;
+    background: linear-gradient(135deg, #100b1c, #32172f, #170d24);
+    color: white;
+    min-height: 100vh;
+    text-align: center;
+    padding: 25px;
+}
+
+.container {
+    max-width: 850px;
+    margin: 35px auto;
+}
+
+.card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 25px;
+    padding: 30px;
+    margin: 22px 0;
+    box-shadow: 0 10px 35px rgba(0,0,0,.3);
+    backdrop-filter: blur(12px);
+}
+
+h1 {
+    color: #ffacd9;
+    font-size: 45px;
+    margin: 20px;
+    letter-spacing: 4px;
+}
+
+h2 {
+    color: #ffacd9;
+    margin-bottom: 20px;
+}
+
+p {
+    line-height: 2.1;
+    font-size: 17px;
+}
+
+input {
+    padding: 15px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    width: 85%;
+    max-width: 300px;
+    text-align: center;
+    font-size: 17px;
+    margin: 15px;
+}
+
+button {
+    background: linear-gradient(45deg, #a43b83, #ed83bb);
+    border: none;
+    padding: 13px 28px;
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px;
+    transition: .3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #ed83bb;
+}
+
+#website {
+    display: none;
+}
+
+.counter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.counter div {
+    background: rgba(255,172,217,.15);
+    padding: 18px;
+    border-radius: 15px;
+    min-width: 100px;
+}
+
+.counter span {
+    display: block;
+    color: #ffacd9;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    margin: 20px 0;
+}
+
+nav button {
+    font-size: 14px;
+}
+
+.hidden-message {
+    display: none;
+    margin-top: 20px;
+    color: #ffc4e4;
+    line-height: 2;
+}
+
+footer {
+    color: #d9a3ca;
+    margin: 35px;
+    font-size: 14px;
+}
+
+@media(max-width:500px) {
+    h1 { font-size: 34px; }
+    .card { padding: 20px; }
+    p { font-size: 15px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- شاشة الدخول -->
+<div id="login" class="card">
+
+<h1>MODI ♡</h1>
+
+<p>
+في حكاية صغيرة مستخبية هنا...
+<br>
+ومش أي حد مسموحله يشوفها 🤍
+</p>
+
+<input
+type="password"
+id="password"
+placeholder="اكتب كلمة السر"
+>
+
+<br>
+
+<button onclick="unlock()">افتح الحكاية ♡</button>
+
+<p id="error" style="color:#ff9aaf;"></p>
+
+</div>
+
+
+<!-- الموقع الأساسي -->
+<div id="website">
+
+<h1>MODI ♡</h1>
+
+<p>Jana & Muhammad</p>
+
+<p>30 / 9 / 2026</p>
+
+<nav>
+<button onclick="showSection('home')">البداية</button>
+<button onclick="showSection('story')">حكايتنا</button>
+<button onclick="showSection('silly')">فترة الصياعة</button>
+<button onclick="showSection('memories')">ذكرياتنا</button>
+<button onclick="showSection('letters')">رسائل</button>
+</nav>
+
+
+<section id="home" class="section">
+
+<div class="card">
+<h2>أهلاً يا محمد 🤍</h2>
+
+<p>
+لو وصلت لهنا يبقى أنت دخلت مكان معمول مخصوص ليك
+ومش مجرد صفحة عادية
+
+دي حتة صغيرة من حكايتنا
+ومن الحاجات اللي نفسي تفضل فاكرها
+</p>
+</div>
+
+<div class="card">
+<h2>من يوم 30/9/2026</h2>
+
+<p>عدّى على بداية حكايتنا...</p>
+
+<div class="counter">
+<div><span id="days">0</span>يوم</div>
+<div><span id="hours">0</span>ساعة</div>
+<div><span id="minutes">0</span>دقيقة</div>
+<div><span id="seconds">0</span>ثانية</div>
+</div>
+</div>
+
+</section>
+
+
+<section id="story" class="section" style="display:none">
+
+<div class="card">
+<h2>حكايتنا بدأت إزاي؟</h2>
+
+<p>
+30/9/2026
+
+تاريخ يمكن يكون بالنسبالناس يوم عادي
+بس بالنسبالي هو تاريخ بداية حكاية مختلفة
+
+حكاية فيها تفاصيل كتير
+وفيها ضحك وهزار ومواقف مش هتتنسي
+
+وأكيد لسه قدامنا تفاصيل أكتر نحكيها
+</p>
+</div>
+
+<div class="card">
+<h2>فرق السن 😂</h2>
+
+<p>
+حتى فرق الـ 8 سنين دخل في حكايتنا
+وكان ليه نصيبه من الهزار والكلام
+</p>
+</div>
+
+</section>
+
+
+<section id="silly" class="section" style="display:none">
+
+<div class="card">
+<h2>فترة الصياعة 😂</h2>
+
+<p>
+آه طبعاً لازم نتكلم عن الفترة دي
+
+الفترة اللي كل واحد فيها مستني التاني
+يعترف الأول
+
+وكل واحد عامل نفسه عادي ومش فارق معاه
+مع إن الحكاية كانت واخدة مساحة من تفكيرنا
+
+يا ترى مين كان هيعترف الأول؟ 😂
+</p>
+</div>
+
+<div class="card">
+<h2>موضوع مودة 😂</h2>
+
+<p>
+ومين ينسى مودة بنت خال محمد الصغيرة
+اللي كان ليها نصيب من الغيرة هي كمان!
+
+حتى الأطفال دخلوا في الحكاية 😂
+</p>
+</div>
+
+</section>
+
+
+<section id="memories" class="section" style="display:none">
+
+<div class="card">
+<h2>ذكرياتنا ♡</h2>
+
+<p>
+كل موقف صغير بينا ممكن يبقى ذكرى كبيرة
+وكل ضحكة وكل هزار وكل كلمة حلوة
+ليها مكانها في الحكاية
+
+</p>
+
+<button onclick="reveal('memory1')">اضغط هنا</button>
+
+<p id="memory1" class="hidden-message">
+أحلى الذكريات هي اللي بنعيشها على طبيعتنا
+من غير تكلف ولا تصنع 🤍
+</p>
+
+</div>
+
+</section>
+
+
+<section id="letters" class="section" style="display:none">
+
+<div class="card">
+<h2>من جنى لمحمد ♡</h2>
+
+<p>
+يا محمد
+
+يمكن أنا مش بعرف أقول كل اللي جوايا
+في الوقت المناسب
+بس حبيت أعملك المكان ده
+عشان يبقى فيه جزء من كلامي وذكرياتي
+
+أتمنى تفضل فاكر إن كل تفصيلة حلوة
+بتفرق وإن أبسط اللحظات ساعات بتبقى أغلى حاجة
+</p>
+</div>
+
+<div class="card">
+<h2>رسالة من المستقبل</h2>
+
+<button onclick="reveal('future')">
+افتح رسالتك
+</button>
+
+<p id="future" class="hidden-message">
+يا محمد من جنى في المستقبل
+
+أتمنى لما ترجع تقرأ الكلام ده
+تكون بخير وتكون مبسوط
+وتكون الأيام جابتلك حاجات حلوة كتير
+
+وخلي بالك من نفسك دايماً 🤍
+</p>
+</div>
+
+</section>
+
+<footer>
+Made with love ♡
+<br>
+Jana → Muhammad
+<br>
+MODI 2026
+</footer>
+
+</div>
+</div>
+
+
+<script>
+
+// كلمة السر
+function unlock() {
+
+    let pass = document.getElementById("password").value;
+
+    if(pass === "30/9/2026") {
+
+        document.getElementById("login").style.display = "none";
+
+        document.getElementById("website").style.display = "block";
+
+        updateCounter();
+
+    } else {
+
+        document.getElementById("error").innerText =
+        "لأ يا محمد 😂 جرب تاني";
+
+    }
+}
+
+
+// الدخول بزر Enter
+document.getElementById("password").addEventListener("keydown", function(e) {
+    if(e.key === "Enter") {
+        unlock();
+    }
+});
+
+
+// التنقل بين الأقسام
+function showSection(id) {
+
+    let sections = document.querySelectorAll(".section");
+
+    sections.forEach(section => {
+        section.style.display = "none";
+    });
+
+    document.getElementById(id).style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+// إظهار الرسائل
+function reveal(id) {
+
+    let message = document.getElementById(id);
+
+    if(message.style.display === "block") {
+        message.style.display = "none";
+    } else {
+        message.style.display = "block";
+    }
+
+}
+
+
+// عداد بداية الحكاية
+function updateCounter() {
+
+    const startDate = new Date("2026-09-30T23:30:00").getTime();
+
+    function calculate() {
+
+        let now = new Date().getTime();
+
+        let difference = now - startDate;
+
+        if(difference < 0) difference = 0;
+
+        let days = Math.floor(difference / (1000 * 60 * 60 * 24));
+
+        let hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+
+        let minutes = Math.floor((difference / (1000 * 60)) % 60);
+
+        let seconds = Math.floor((difference / 1000) % 60);
+
+        document.getElementById("days").innerText = days;
+
+        document.getElementById("hours").innerText = hours;
+
+        document.getElementById("minutes").innerText = minutes;
+
+        document.getElementById("seconds").innerText = seconds;
+
+    }
+
+    calculate();
+
+    setInterval(calculate, 1000);
+
+}
+
+</script>
+
+</body>
+</html>
